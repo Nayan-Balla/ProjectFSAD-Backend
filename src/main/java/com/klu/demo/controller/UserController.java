@@ -18,7 +18,7 @@ import com.klu.demo.repository.RegistrationRepository;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
+@CrossOrigin(origins = "*", allowCredentials = "true")
 public class UserController {
 
     @Autowired private UserRepository userRepository;
