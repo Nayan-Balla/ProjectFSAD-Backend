@@ -1,33 +1,27 @@
-# Stage 1: Build the WAR
-
+# Stage 1: Build
 FROM maven:3.9.11-eclipse-temurin-21 AS build
-
 WORKDIR /app
 
-# Copy pom.xml and download dependencies (cached)
-
+# Copy pom and download dependencies
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
-# Copy project source
-
+# Copy source code
 COPY src ./src
 
-# Build WAR file
-
+# Build JAR
 RUN mvn clean package -DskipTests
 
 
-# Stage 2: Run the WAR
-
-FROM eclipse-temurin:21-jre-ubi9-minimal
-
+# Stage 2: Run
+FROM eclipse-temurin:21-jdk-jammy
 WORKDIR /app
 
-# Copy WAR from build stage
-
+# Copy JAR from build stage
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 2020
+# Render requires 8080 exposure (important)
+EXPOSE 8080
 
-CMD ["java", "-jar", "app.jar"]
+# Run app
+ENTRYPOINT ["java", "-jar", "app.jar"]
