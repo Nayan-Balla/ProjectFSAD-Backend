@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/submissions")
-@CrossOrigin(origins = "*", allowCredentials = "true")
 public class SubmissionController {
     @Autowired private SubmissionService svc;
 

@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
-@CrossOrigin(origins = "*", allowCredentials = "true")
 public class RegistrationController {
     @Autowired private RegistrationService svc;
     @PostMapping public Registration add(@RequestBody Registration r){ return svc.add(r); }

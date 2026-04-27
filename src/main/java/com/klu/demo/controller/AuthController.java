@@ -14,7 +14,6 @@ import com.klu.demo.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*", allowCredentials = "true")
 public class AuthController {
 
     @Autowired

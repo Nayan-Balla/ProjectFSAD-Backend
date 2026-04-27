@@ -15,7 +15,6 @@ import com.klu.demo.service.CourseService;
 
 @RestController
 @RequestMapping("/api/courses")
-@CrossOrigin(origins = "*", allowCredentials = "true")
 public class CourseController {
 
     @Autowired
